@@ -1,5 +1,8 @@
 import * as greeter from "./greeter";
+jest.mock('./database', () => {
+    return {people: [":name:"]};
+});
 
 test("hello world", () => {
-    expect(1+1).toBe(2);
-})
+    expect(greeter.greet()).toBe("Hello :name:!");
+});
